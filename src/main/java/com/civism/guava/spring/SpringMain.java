@@ -2,8 +2,6 @@ package com.civism.guava.spring;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * @author : Guava
  * @version 1.0
@@ -18,12 +16,11 @@ public class SpringMain {
     public static void main(String[] args) throws Exception {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath*:spring/*.xml");
 
-        context.start();
+//        GuavaSessionFactory bean = context.getBean(GuavaSessionFactory.class);
+        GuavaSessionFactory bean = (GuavaSessionFactory)context.getBean("guavaSessionFactory");
+//        bean.getObject().say();
+        System.out.println(bean);
+        bean.say();
 
-        System.out.println("1111");
-        context.registerShutdownHook();
-        System.out.println(2222);
-
-        TimeUnit.SECONDS.sleep(10);
     }
 }
